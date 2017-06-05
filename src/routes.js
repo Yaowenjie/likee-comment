@@ -1,5 +1,5 @@
 import requireDir from 'require-dir';
-import { each, isFunction, isPlainObject } from 'lodash'
+import { each, isFunction, isPlainObject } from 'lodash';
 
 module.exports = (app) => {
   const resources = requireDir('./apis/', {recurse: true});
