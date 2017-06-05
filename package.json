@@ -16,7 +16,9 @@
     "babel-preset-stage-3": "^6.24.1",
     "better-sqlite3": "^2.3.3",
     "body-parser": "^1.17.2",
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "lodash": "^4.17.4",
+    "require-dir": "^0.3.2"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
