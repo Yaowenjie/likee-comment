@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/app.js --exec babel-node --presets es2015,stage-3"
+    "test": "mocha --compilers js:babel-core/register --require babel-polyfill test/**/*.spec.js",
+    "dev": "nodemon src/app.js --exec babel-node --presets es2015,stage-3",
+    "start": "babel-node src/app.js --presets es2015,stage-3",
+    "lint": "./node_modules/.bin/eslint test/* src/*"
   },
   "author": "",
   "license": "ISC",
@@ -21,7 +23,11 @@
     "require-dir": "^0.3.2"
   },
   "devDependencies": {
+    "chai": "^4.0.1",
     "eslint": "^3.19.0",
-    "nodemon": "^1.11.0"
+    "eslint-plugin-jasmine": "^2.2.0",
+    "mocha": "^3.4.2",
+    "nodemon": "^1.11.0",
+    "sinon": "^2.3.2"
   }
 }

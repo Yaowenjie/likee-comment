@@ -1,0 +1,1 @@
+export const threadSchema = 'thread (id INTEGER PRIMARY KEY, created_at STRING, likes INTEGER, title STRING, url STRING, key STRING, site_id STRING)';
