@@ -7,13 +7,17 @@ describe('threadService', () => {
   describe('#saveThread', () => {
     let stub;
     const thread = {
-      'id': 6266750315286815762,
-      'created_at': '2016-03-27T23:11:49+08:00',
-      'likes': 3,
-      'title': '哈哈',
-      'url': 'http:\/\/\u8bf7\u66ff\u6362\u6210\u6587\u7ae0\u7684\u7f51\u5740',
-      'key': '\u8bf7\u5c06\u6b64\u5904\u66ff\u6362\u6210\u6587\u7ae0\u5728\u4f60\u7684\u7ad9\u70b9\u4e2d\u7684ID',
-      'site_id': 12323
+      'site_id': '1290665',
+      'thread_id': '6295207496181089026',
+      'created_at': '2016-06-12T15:40:13+08:00',
+      'updated_at': '2016-06-12T15:40:13+08:00',
+      'likes': 0,
+      'views': 0,
+      'thread_key': '\u4ece\u5934\u5199\u4e00\u4e2aCucumber\u6d4b\u8bd5(\u4e00) Selenium',
+      'title': '\u4ece\u5934\u5199\u4e00\u4e2aCucumber\u6d4b\u8bd5(\u4e00) Selenium',
+      'url': 'http:\/\/\/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3\/cucumber-test',
+      'author_key': '',
+      'author_id': 0
     };
 
     beforeEach(() => {
@@ -26,7 +30,7 @@ describe('threadService', () => {
 
     it('should save thread unsuccessful with status and error message when error happens', () => {
       const fakedError = new Error('testing error');
-      stub.withArgs('insert into thread values(?, ?, ?, ?, ?, ?, ?);').throws(fakedError);
+      stub.withArgs('insert into thread values(?, ?, ?, ?, ?, ?, ?, ?, ?);').throws(fakedError);
 
       expect(saveThread(thread)).to.eql({'status': 'failed', 'error': fakedError.message});
     });

@@ -1,5 +1,5 @@
 import {db, initDB} from '../../src/util/sqlite';
-import {threadSchema} from '../../src/constant/schema';
+import {threadSchema, postSchema} from '../../src/constant/schema';
 import {expect} from 'chai';
 import sinon from 'sinon';
 
@@ -13,10 +13,13 @@ describe('sqlite', () => {
     it('should call prepare for CREATE TABLE', () => {
       let spy = sinon.spy(db, 'prepare');
       spy.withArgs('CREATE TABLE IF NOT EXISTS ' + threadSchema);
+      spy.withArgs('CREATE TABLE IF NOT EXISTS ' + postSchema);
 
       initDB();
 
+      expect(spy.callCount).to.equal(2);
       expect(spy.withArgs('CREATE TABLE IF NOT EXISTS ' + threadSchema).calledOnce).to.be.true;
+      expect(spy.withArgs('CREATE TABLE IF NOT EXISTS ' + postSchema).calledOnce).to.be.true;
       db.prepare.restore();
     });
 
