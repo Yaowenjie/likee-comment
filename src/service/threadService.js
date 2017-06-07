@@ -5,13 +5,13 @@ const fns = {
     try {
       const result = db.prepare('insert into thread values(?, ?, ?, ?, ?, ?, ?, ?, ?);')
         .run(
-          thread.site_id,
+          Number(thread.site_id),
           thread.id,
           thread.created_at,
           thread.created_at,
           thread.likes,
           0,
-          thread.key,
+          thread.thread_key,
           thread.title,
           thread.url
         );
@@ -19,6 +19,9 @@ const fns = {
     } catch (e) {
       return {'status': 'failed', 'error': e.message};
     }
+  },
+  findThreadByKey: (key) => {
+    return db.prepare('SELECT * FROM thread WHERE thread_key=?').get(key);
   }
 };
 

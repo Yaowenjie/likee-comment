@@ -5,8 +5,8 @@ const fns = {
     try {
       const result = db.prepare('insert into post values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);')
         .run(
-          post.id,
-          post.thread_id,
+          Number(post.post_id),
+          Number(post.thread_id),
           post.message,
           post.site_id,
           post.created_at,
@@ -14,7 +14,7 @@ const fns = {
           post.likes,
           post.ip,
           post.parents,
-          post.author_id,
+          Number(post.author_id),
           post.author_email,
           post.author_url
         );
@@ -22,6 +22,9 @@ const fns = {
     } catch (e) {
       return {'status': 'failed', 'error': e.message};
     }
+  },
+  findPostsByThreadId: (id) => {
+    return db.prepare('SELECT * FROM post WHERE thread_id=?').all(id);
   }
 };
 
