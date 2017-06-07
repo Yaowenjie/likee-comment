@@ -1,6 +1,16 @@
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-4.9
+      - g++-4.9
+
 language: node_js
 node_js:
-  - "7"
+  - "6"
+before_install:
+  - export CC="gcc-4.9" CXX="g++-4.9"
 script:
   - npm run lint
   - npm run test
